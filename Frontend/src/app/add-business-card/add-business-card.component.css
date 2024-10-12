@@ -1,0 +1,40 @@
+/* styles.css or component-specific CSS file */
+
+body {
+    background-color: #f0f2f5; /* Light gray background */
+  }
+  
+  h2 {
+    color: #007bff; /* Bootstrap primary color */
+  }
+  
+  .container {
+    background: #ffffff !important; /* White background for form */
+    border-radius: 8px; /* Rounded corners */
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+    padding: 20px; /* Padding around form */
+  }
+  
+  .form-label {
+    font-weight: bold; /* Bold labels */
+  }
+  
+  .btn {
+    transition: background-color 0.3s; /* Smooth transition for button */
+    background-color: #007bff; /* لون الزر */
+    border-color: #007bff;
+  }
+  
+  .btn:hover {
+    background-color: #0056b3; /* Darker shade on hover */
+  }
+  
+  textarea {
+    resize: vertical; /* Allow vertical resizing only */
+  }
+  
+  input[type="file"] {
+    border: 1px solid #ced4da; /* Standard border for file input */
+    border-radius: 0.25rem; /* Consistent border radius */
+  }
+  
