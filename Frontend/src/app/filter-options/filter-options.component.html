@@ -1,1 +1,35 @@
-<p>filter-options works!</p>
+<form (ngSubmit)="applyFilters()" class="filter-form">
+  <div class="form-group">
+      <mat-form-field appearance="fill" class="form-field">
+          <mat-label>Name*</mat-label>
+          <input matInput [(ngModel)]="name" placeholder="Enter your name" name="name" required />
+      </mat-form-field>
+
+      <mat-form-field appearance="fill" class="form-field">
+          <mat-label>Date of Birth*</mat-label>
+          <input matInput [(ngModel)]="dateOfBirth" placeholder="mm/dd/yyyy" name="dob" required />
+      </mat-form-field>
+
+      <mat-form-field appearance="fill" class="form-field">
+          <mat-label>Phone*</mat-label>
+          <input matInput [(ngModel)]="phone" placeholder="Enter your phone number" name="phone" required />
+      </mat-form-field>
+
+      <mat-form-field appearance="fill" class="form-field">
+          <mat-label>Gender*</mat-label>
+          <mat-select [(ngModel)]="gender" name="gender" required>
+              <mat-option value="male">Male</mat-option>
+              <mat-option value="female">Female</mat-option>
+              <mat-option value="other">Other</mat-option>
+          </mat-select>
+      </mat-form-field>
+
+      <mat-form-field appearance="fill" class="form-field">
+          <mat-label>Email*</mat-label>
+          <input matInput [(ngModel)]="email" placeholder="Enter your email" name="email" required />
+      </mat-form-field>
+
+      <button mat-raised-button color="primary" type="submit" class="search-button">Search</button>
+      <button mat-raised-button color="warn" type="button" (click)="resetForm()" class="reset-button">Reset</button>
+  </div>
+</form>

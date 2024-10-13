@@ -1,3 +1,7 @@
+<h2>Business Card List</h2>
+<app-filter (filterChange)="applyFilters($event)"></app-filter>
+<form class="containers">
+<div class="grid-body"> 
 <div class="grid-container">
   <div class="grid-header">
       <div>Name</div>
@@ -16,8 +20,10 @@
       <div class="grid-item">{{ card.phone }}</div>
       <div class="grid-item">{{ card.address }}</div>
       <div class="grid-item">
-          <button (click)="deleteCard(card.id)">Delete</button>
-          <button (click)="exportCard(card)">Export</button>
+          <button id="Delete" (click)="deleteCard(card.id)">Delete</button>
+          <button id="Update" (click)="exportCard(card)">Update</button>
       </div>
   </div>
 </div>
+</div>   
+</form>

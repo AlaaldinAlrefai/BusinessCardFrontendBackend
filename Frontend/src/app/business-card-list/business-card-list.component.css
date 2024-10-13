@@ -1,8 +1,30 @@
+h2 {
+    display: flex;
+    justify-content: center;  /* Centers content horizontally */
+    align-items: center;      /* Optional: centers content vertically */
+    height: 100%;             /* Optional: if you want to center within a container */
+    margin-top: 5px;
+    color: #007bff;
+}
+.grid-body{
+    background-color: #007bff; /* Light gray background */
+    border-radius: 8px; /* Rounded corners */
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+    padding: 20px; /* Padding around form */
+}
 .grid-container {
     display: grid;
     grid-template-columns: repeat(7, 1fr); /* Seven columns for each property + actions */
     gap: 16px; /* Space between grid items */
     margin: 20px 0; /* Top and bottom margins */
+    width: 80%;
+    margin-left: 170px;
+    margin-top: 20px;
+
+    background: #ffffff !important; /* White background for form */
+    border-radius: 8px; /* Rounded corners */
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+    padding: 20px; /* Padding around form */
 }
 
 .grid-header {
@@ -28,3 +50,42 @@
     text-align: center; /* Center align text */
     border-bottom: 2px solid #ddd; /* Bottom border for separation */
 }
+#Delete{
+    background-color: #DC3545; /* Red */
+    color: white;               /* Text color */
+    border: none;               /* Remove border */
+
+    border-radius: 5px;        /* Rounded corners */
+    cursor: pointer;            /* Pointer cursor */
+    transition: background-color 0.3s; /* Smooth transition */
+}
+#Update{
+
+    background-color: #007BFF; /* Blue */
+    color: white;               /* Text color */
+    border: none;               /* Remove border */
+
+    border-radius: 5px;        /* Rounded corners */
+    cursor: pointer;            /* Pointer cursor */
+    transition: background-color 0.3s; /* Smooth transition */
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
