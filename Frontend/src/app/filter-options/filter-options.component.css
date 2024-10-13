@@ -1,0 +1,26 @@
+.filter-form {
+    max-width: 1200px; /* Adjust based on your design */
+    margin: auto; /* Center the form */
+    padding: 20px; /* Add padding */
+    background-color: #f9f9f9; /* Light background for contrast */
+    border-radius: 8px; /* Rounded corners */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+  }
+  
+  .form-group {
+    display: flex; /* Align items horizontally */
+    gap: 16px; /* Space between fields */
+    flex-wrap: nowrap; /* Prevent wrapping to the next line */
+    align-items: center; /* Center items vertically */
+  }
+  
+  .form-field {
+    flex: 1; /* Allow fields to grow equally */
+    min-width: 150px; /* Minimum width for responsive design */
+    max-width: 200px; /* Max width to keep layout tidy */
+  }
+  
+  .search-button {
+    margin-left: 16px; /* Space between the button and fields */
+  }
+  

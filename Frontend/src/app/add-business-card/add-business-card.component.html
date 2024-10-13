@@ -53,11 +53,34 @@
       <textarea id="notes" class="form-control" [(ngModel)]="newCard.notes" name="notes" rows="3"></textarea>
     </div>
   
+    
+
+
     <div class="mb-3">
       <label for="photo" class="form-label">Upload Photo:</label>
-      <input type="file" id="photo" class="form-control" (change)="onFileChange($event)" accept="image/*" />
+      <input 
+          type="file" 
+          id="photo" 
+          class="form-control" 
+          (change)="onFileChange($event)" 
+          accept="image/*" 
+      />
       <small class="form-text text-muted">Please upload a photo.</small>
-    </div>
+  
+      <!-- Preview the uploaded image -->
+      <div *ngIf="newCard.photo">
+          <!-- Use the complete Base64 string for the image source -->
+          <!--<img [src]="'data:image/png;base64,' + newCard.photo" alt="Photo Preview" style="max-width: 100%; margin-top: 10px;" />-->
+          <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAF8/9hAAABQ0lEQVR42mJ0FgAIAzLMAAJWgPQE1ggErwDgsCZwB0AwF2TAsAIGDAATh2u1IAAAAABJRU5ErkJggg==" alt="Photo Preview" style="max-width: 100%; margin-top: 10px;" />
+
+      </div>
+  </div>
+  
+  
+  
+
+
+
   
     <div class="mb-3">
         <label for="file" class="form-label">Upload File (XML/CSV):</label>
