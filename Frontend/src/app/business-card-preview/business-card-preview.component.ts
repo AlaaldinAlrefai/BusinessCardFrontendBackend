@@ -1,12 +1,12 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
+import { BusinessCard } from '../models/business-card.model';
 
 @Component({
   selector: 'app-business-card-preview',
-  standalone: true,
-  imports: [],
   templateUrl: './business-card-preview.component.html',
-  styleUrl: './business-card-preview.component.css'
+  styleUrls: ['./business-card-preview.component.css'],
+  standalone:true
 })
 export class BusinessCardPreviewComponent {
-
+  @Input() businessCard!: BusinessCard; // Bind business card data
 }

@@ -15,7 +15,6 @@
         <option value="">Select Gender</option>
         <option value="Male">Male</option>
         <option value="Female">Female</option>
-        <option value="Other">Other</option>
       </select>
       <div class="invalid-feedback" *ngIf="businessCardForm.controls['gender']?.invalid && businessCardForm.controls['gender']?.touched">
         Gender is required.
@@ -82,25 +81,15 @@
 
 
   
-    <div class="mb-3">
-        <label for="file" class="form-label">Upload File (XML/CSV):</label>
-        <input type="file" id="file" class="form-control" (change)="onFileChange($event)" accept=".xml,.csv" />
-        <small class="form-text text-muted">Please upload a file in XML or CSV format.</small>
-      </div>
     
-      <!-- Drag-and-drop area -->
-      <div 
-        (drop)="onFileDrop($event)" 
-        (dragover)="onDragOver($event)" 
-        class="border border-dashed p-4 text-center mb-3"
-        style="cursor: pointer;"
-      >
-        Drag and drop a file here
-      </div>
   
     <div class="text-center">
       <button type="submit" class="btn btn-primary" [disabled]="businessCardForm.invalid">Add Business Card</button>
     </div>
+
+
+    <app-import-business-card></app-import-business-card>
+
   </form>
 
 

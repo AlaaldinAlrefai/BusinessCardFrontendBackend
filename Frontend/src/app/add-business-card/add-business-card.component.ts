@@ -2,13 +2,14 @@ import { Component } from '@angular/core';
 import { FormsModule } from '@angular/forms'; 
 import { BusinessCardService } from '../services/business-card.service';
 import { BusinessCard } from '../models/business-card.model';
+import { ImportBusinessCardComponent } from "../import-business-card/import-business-card.component";
 
 @Component({
   selector: 'app-add-business-card',
   standalone: true,
   templateUrl: './add-business-card.component.html',
   styleUrls: ['./add-business-card.component.css'],
-  imports: [FormsModule]
+  imports: [FormsModule, ImportBusinessCardComponent]
 })
 export class AddBusinessCardComponent {
   newCard: BusinessCard = { 

@@ -1,1 +1,10 @@
-<p>business-card-preview works!</p>
+<div class="preview-container" *ngIf="businessCard">
+    <h4>Preview Business Card:</h4>
+    <div class="business-card-preview">
+        <p><strong>Name:</strong> {{ businessCard.name }}</p>
+        <p><strong>Date of Birth:</strong> {{ businessCard.dateOfBirth }}</p>
+        <p><strong>Phone:</strong> {{ businessCard.phone }}</p>
+        <p><strong>Email:</strong> {{ businessCard.email }}</p>
+        <img *ngIf="businessCard.photo" [src]="businessCard.photo" alt="Photo Preview" style="max-width: 100px; max-height: 100px;">
+    </div>
+</div>
