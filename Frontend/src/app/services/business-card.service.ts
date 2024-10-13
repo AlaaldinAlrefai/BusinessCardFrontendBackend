@@ -9,7 +9,7 @@ import { BusinessCard } from '../models/business-card.model'; // Adjust the impo
 export class BusinessCardService {
   private apiUrl = 'https://localhost:7032/api/BusinessCards'; // Update with your API URL
   private apiUrlFilter = 'https://localhost:7032/api/BusinessCards/filter';
-  private apiUrladd = 'https://localhost:7032/api/BusinessCards';
+ 
 
   constructor(private http: HttpClient) {}
 
@@ -24,7 +24,7 @@ export class BusinessCardService {
   }
 
   addBusinessCard(card: BusinessCard): Observable<BusinessCard> {
-    return this.http.post<BusinessCard>(this.apiUrladd, card); // Send a POST request to add the card
+    return this.http.post<BusinessCard>(this.apiUrl, card); // Send a POST request to add the card
   }
 
 

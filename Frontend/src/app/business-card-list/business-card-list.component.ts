@@ -3,6 +3,7 @@ import { BusinessCardService } from '../services/business-card.service';
 import { CommonModule } from '@angular/common';
 import { FilterComponent } from '../filter-options/filter-options.component'; // Import FilterComponent
 import { FormsModule } from '@angular/forms';
+import { ExportBusinessCardComponent } from "../export-business-card/export-business-card.component";
 
 
 @Component({
@@ -10,7 +11,8 @@ import { FormsModule } from '@angular/forms';
   standalone: true,
   templateUrl: './business-card-list.component.html',
   styleUrls: ['./business-card-list.component.css'],
-  imports: [CommonModule, FilterComponent,FormsModule] // Include FilterComponent here
+  imports: [CommonModule, FilterComponent, FormsModule, ExportBusinessCardComponent] // Include FilterComponent here
+ // Include FilterComponent here
 })
 export class BusinessCardListComponent {
   businessCards: any[] = []; // Initialize as an empty array

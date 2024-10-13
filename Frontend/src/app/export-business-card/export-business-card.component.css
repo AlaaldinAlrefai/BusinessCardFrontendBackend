@@ -1,0 +1,28 @@
+/* styles.css or your-component.component.css */
+
+.button-container {
+    display: flex;
+    justify-content: center; /* Center the buttons horizontally */
+    margin-top: 20px; /* Add some spacing at the top */
+}
+
+.export-button {
+    margin: 0 10px; /* Add spacing between buttons */
+    padding: 10px 20px; /* Increase padding for better touch target */
+    font-size: 16px; /* Increase font size */
+    border-radius: 5px; /* Rounded corners */
+    border: none; /* Remove default border */
+    cursor: pointer; /* Change cursor on hover */
+    transition: background-color 0.3s ease, transform 0.3s ease; /* Smooth transitions */
+}
+
+.export-button:hover {
+    background-color: rgba(0, 123, 255, 0.7); /* Lighten background on hover */
+    transform: translateY(-2px); /* Lift effect on hover */
+}
+
+.export-button:focus {
+    outline: none; /* Remove outline on focus */
+    box-shadow: 0 0 0 2px rgba(0, 123, 255, 0.5); /* Add shadow for better visibility */
+}
+
