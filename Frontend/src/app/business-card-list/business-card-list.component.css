@@ -82,7 +82,40 @@ h2 {
     transform: scale(1.05);    /* Slightly enlarge the button on hover */
 }
 
+/* app.component.css or global styles.css */
 
+/* Basic styling for the Add Business Card button */
+.add-card-btn {
+    background-color: #007bff; /* Primary blue */
+    color: #fff; /* White text */
+    border: none;
+    padding: 10px 20px; /* Space around the text */
+    font-size: 16px; /* Adjust the font size */
+    border-radius: 5px; /* Slightly rounded corners */
+    cursor: pointer; /* Pointer on hover */
+    transition: background-color 0.3s ease, box-shadow 0.3s ease; /* Smooth transition for hover effects */
+  }
+  
+  /* Hover and focus state for better user experience */
+  .add-card-btn:hover, .add-card-btn:focus {
+    background-color: #0056b3; /* Darker blue on hover */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); /* Shadow effect on hover */
+    outline: none; /* Remove the outline on focus */
+  }
+  
+  /* Active state to show feedback when clicked */
+  .add-card-btn:active {
+    background-color: #004085; /* Even darker blue when pressed */
+    box-shadow: none; /* Remove shadow when button is pressed */
+  }
+  
+  /* Optional: disabled state styling */
+  .add-card-btn:disabled {
+    background-color: #d6d6d6; /* Light gray when disabled */
+    color: #7a7a7a; /* Muted text color when disabled */
+    cursor: not-allowed; /* Show 'not-allowed' cursor when disabled */
+  }
+  
 
 
 

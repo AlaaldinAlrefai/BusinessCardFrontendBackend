@@ -8,6 +8,7 @@ import { ToastrService } from 'ngx-toastr';
 import { MatDialog } from '@angular/material/dialog';
 import { UpdateBusinessCardComponent } from '../update-business-card/update-business-card.component';
 import { businessCard, BusinessCard } from '../models/business-card.model';
+import { Router } from '@angular/router';
 
 
 @Component({
@@ -26,9 +27,20 @@ export class BusinessCardListComponent {
   businessCards: businessCard[] = [];
   
   
-  constructor(private businessCardService: BusinessCardService,private toastr:ToastrService,public dialog: MatDialog ) {
+  constructor(private businessCardService: BusinessCardService,private toastr:ToastrService,public dialog: MatDialog 
+    ,private router: Router
+  ) {
     this.loadBusinessCards(); // Load business cards in the constructor
   }
+
+
+
+  // Method to navigate to another page
+  navigateToAddBusinessCard() {
+    this.router.navigate(['/add']); // Redirect to the 'add' route
+  }
+
+
 
   loadBusinessCards() {
     this.businessCardService.getBusinessCards().subscribe(cards => {

@@ -3,6 +3,7 @@ import { FormsModule } from '@angular/forms';
 import { BusinessCardService } from '../services/business-card.service';
 import { BusinessCard } from '../models/business-card.model';
 import { ImportBusinessCardComponent } from "../import-business-card/import-business-card.component";
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-add-business-card',
@@ -28,13 +29,14 @@ export class AddBusinessCardComponent {
 
   
 
-  constructor(private businessCardService: BusinessCardService) {}
+  constructor(private businessCardService: BusinessCardService,private router: Router) {}
 
   onSubmit() {
     this.businessCardService.addBusinessCard(this.newCard).subscribe(
       (response) => {
         console.log('Business card added successfully:', response);
         // Reset form or show success message
+        
       },
       (error) => {
         console.error('Error adding business card:', error);
@@ -44,6 +46,10 @@ export class AddBusinessCardComponent {
   
 
 
+  // Method to navigate to another page
+  navigateToBusinessCardList() {
+    this.router.navigate(['/list']); // Redirect to the 'add' route
+  }
 
 
 
