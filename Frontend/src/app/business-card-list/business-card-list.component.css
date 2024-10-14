@@ -2,7 +2,7 @@ h2 {
     display: flex;
     justify-content: center;  /* Centers content horizontally */
     align-items: center;      /* Optional: centers content vertically */
-    height: 100%;             /* Optional: if you want to center within a container */
+    height: 100px;             /* Optional: if you want to center within a container */
     margin-top: 5px;
     color: #007bff;
 }
@@ -14,12 +14,11 @@ h2 {
 }
 .grid-container {
     display: grid;
-    grid-template-columns: repeat(7, 1fr); /* Seven columns for each property + actions */
+    grid-template-columns: repeat(8, 1fr); /* Seven columns for each property + actions */
     gap: 16px; /* Space between grid items */
     margin: 20px 0; /* Top and bottom margins */
-    width: 80%;
-    margin-left: 170px;
-    margin-top: 20px;
+    
+
 
     background: #ffffff !important; /* White background for form */
     border-radius: 8px; /* Rounded corners */
@@ -50,25 +49,39 @@ h2 {
     text-align: center; /* Center align text */
     border-bottom: 2px solid #ddd; /* Bottom border for separation */
 }
-#Delete{
+#Delete {
     background-color: #DC3545; /* Red */
     color: white;               /* Text color */
     border: none;               /* Remove border */
-
     border-radius: 5px;        /* Rounded corners */
     cursor: pointer;            /* Pointer cursor */
-    transition: background-color 0.3s; /* Smooth transition */
+    transition: background-color 0.3s, transform 0.3s; /* Smooth transition for color and scaling */
+    padding: 5px 10px;         /* Padding for better touch target */
+    font-size: 16px;           /* Font size for readability */
+    margin-right: 6px;
 }
-#Update{
 
+#Delete:hover {
+    background-color: #c82333; /* Darker red on hover */
+    transform: scale(1.05);    /* Slightly enlarge the button on hover */
+}
+
+#Update {
     background-color: #007BFF; /* Blue */
     color: white;               /* Text color */
     border: none;               /* Remove border */
-
     border-radius: 5px;        /* Rounded corners */
     cursor: pointer;            /* Pointer cursor */
-    transition: background-color 0.3s; /* Smooth transition */
+    transition: background-color 0.3s, transform 0.3s; /* Smooth transition for color and scaling */
+    padding: 5px 10px;        /* Padding for better touch target */
+    font-size: 16px;           /* Font size for readability */
 }
+
+#Update:hover {
+    background-color: #0056b3; /* Darker blue on hover */
+    transform: scale(1.05);    /* Slightly enlarge the button on hover */
+}
+
 
 
 

@@ -3,6 +3,8 @@ import { RouterModule } from '@angular/router'; // Import RouterModule for routi
 import { AddBusinessCardComponent } from './add-business-card/add-business-card.component'; // Adjust the path as needed
 import { BusinessCardListComponent } from './business-card-list/business-card-list.component'; // Adjust the path as needed
 import { BusinessCard } from './models/business-card.model';
+import { ToastrModule, ToastrService } from 'ngx-toastr';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @Component({
   selector: 'app-root',
@@ -13,17 +15,18 @@ import { BusinessCard } from './models/business-card.model';
     RouterModule, // Include RouterModule for routing
     AddBusinessCardComponent, // Import the AddBusinessCardComponent
     BusinessCardListComponent // Import the BusinessCardListComponent
+    
   ]
 })
 export class AppComponent {
   title = 'Business Card Manager';
 
-  //businessCards: BusinessCard[] = []; // Your array of business cards
-  //filteredBusinessCards: BusinessCard[] = []; // For displaying filtered results
+  
 
-  constructor() {
-    // Initialize filteredBusinessCards with all business cards
-    //this.filteredBusinessCards = this.businessCards;
+  constructor(private toastr: ToastrService) {}
+
+  showToast() {
+    this.toastr.success('Hello world!', 'Toastr fun!');
   }
 
   /*applyFilter(filters: any) {

@@ -122,4 +122,16 @@ importQRCode(file: File) {
 
 
 
+  updateBusinessCard(id: number, updatedData: any) {
+    return this.http.put(`https://localhost:7032/api/BusinessCards/${id}`, updatedData);
+  }
+
+
+
+
+
+
+
+
+
 }
