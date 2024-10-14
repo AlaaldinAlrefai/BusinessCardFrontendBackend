@@ -1,6 +1,6 @@
 
 <div class="containers">
-<form (ngSubmit)="onSubmit()" #businessCardForm="ngForm" class="containers mt-4 p-4 border rounded shadow-lg bg-light">
+<form (ngSubmit)="onSubmit(businessCardForm)" #businessCardForm="ngForm" class="containers mt-4 p-4 border rounded shadow-lg bg-light">
     <h2 class="mb-4 text-center text-primary">Add Your Business Card</h2>
   
     <div class="mb-3">
@@ -62,20 +62,20 @@
       <input 
           type="file" 
           id="photo" 
+          #photoInput 
           class="form-control" 
           (change)="onFileChange($event)" 
           accept="image/*" 
       />
       <small class="form-text text-muted">Please upload a photo.</small>
-  
+    
       <!-- Preview the uploaded image -->
       <div *ngIf="newCard.photo">
-          <!-- Use the complete Base64 string for the image source -->
-          <!--<img [src]="'data:image/png;base64,' + newCard.photo" alt="Photo Preview" style="max-width: 100%; margin-top: 10px;" />-->
-          <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAF8/9hAAABQ0lEQVR42mJ0FgAIAzLMAAJWgPQE1ggErwDgsCZwB0AwF2TAsAIGDAATh2u1IAAAAABJRU5ErkJggg==" alt="Photo Preview" style="max-width: 100%; margin-top: 10px;" />
-
+          <img [src]="newCard.photo" alt="Photo Preview" style="max-width: 100%; margin-top: 10px;" />
       </div>
-  </div>
+    </div>
+    
+  
   
   
   

@@ -48,35 +48,53 @@ onDrop(event: DragEvent) {
  
 
   // Import files
-importFiles() {
-  this.files.forEach(file => {
-    if (file.type === 'application/xml' || file.name.endsWith('.xml')) {
-      this.businessCardService.importXML(file).subscribe(
-        response => {
-          console.log('Imported XML response:', response);
-          this.businessCardPreview = response; // Set the imported data for preview
-        },
-        error => {
-          console.error('Error importing XML:', error);
-        }
-      );
-    } else if (file.type === 'text/csv' || file.name.endsWith('.csv')) {
-      this.businessCardService.importCSV(file).subscribe(
-        response => {
-          console.log('Imported CSV response:', response);
-          this.businessCardPreview = response; // Set the imported data for preview
-        },
-        error => {
-          console.error('Error importing CSV:', error);
-        }
-      );
-    } else {
-      console.warn('Unsupported file type:', file.type);
+  importFiles() {
+    if (this.files.length === 0) {
+        console.warn('No files selected for import.');
+        return; // Early return if no files are selected
     }
-  });
+
+    this.files.forEach(file => {
+        if (file.type === 'application/xml' || file.name.endsWith('.xml')) {
+            this.businessCardService.importXML(file).subscribe(
+                response => {
+                    console.log('Imported XML response:', response);
+                    this.businessCardPreview = response; // Set the imported data for preview
+
+                    // Clear files and reset preview after import
+                   this.clearForm();
+                },
+                error => {
+                    console.error('Error importing XML:', error);
+                }
+            );
+        } else if (file.type === 'text/csv' || file.name.endsWith('.csv')) {
+            this.businessCardService.importCSV(file).subscribe(
+                response => {
+                    console.log('Imported CSV response:', response);
+                    this.businessCardPreview = response; // Set the imported data for preview
+
+                    // Clear files and reset preview after import
+                    this.clearForm();
+                },
+                error => {
+                    console.error('Error importing CSV:', error);
+                }
+            );
+        } else {
+            console.warn('Unsupported file type:', file.type);
+        }
+    });
 }
 
 
+// Method to clear the files and preview
+clearForm() {
+  this.files = []; // Clear the files array
+  this.businessCardPreview = null; // Reset the preview
+  this.fileInput.nativeElement.value = ''; // Clear the file input
+  console.log('Form cleared after import.');
+}
 
 
 

@@ -29,7 +29,7 @@
             #fileInput />
     </div>
     
-    <button type="submit" class="btn btn-primary" (click)="importFiles()">Import Files</button>
+    <button type="submit" class="btn btn-primary" (click)="importFiles()" [disabled]="files.length === 0" >Import Files</button>
 
     <div *ngIf="businessCardPreview" class="preview-section">
         <h4>Preview:</h4>
