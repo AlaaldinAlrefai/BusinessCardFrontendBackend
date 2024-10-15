@@ -34,27 +34,36 @@ export class AddBusinessCardComponent {
 
   constructor(private businessCardService: BusinessCardService,private router: Router) {}
 
-  onSubmit(form: NgForm) {
-    this.businessCardService.addBusinessCard(this.newCard).subscribe(
-      (response) => {
-        console.log('Business card added successfully:', response);
-        // Set isCardSaved to true after successful submission
-        // Reset form or show success message
 
-        // Convert dateOfBirth to a Date object if it exists
+
+  
+
+
+  onSubmit(form: NgForm) {
+    // Convert gender to lowercase before submitting
+    if (this.newCard.gender) {
+      this.newCard.gender = this.newCard.gender.toLowerCase(); // Convert gender to lowercase
+    }
+  
+    // Convert dateOfBirth to a Date object if it exists
     if (this.newCard.dateOfBirth) {
       this.newCard.dateOfBirth = new Date(this.newCard.dateOfBirth);
     }
-    // After successful submission, clear the form
-    this.clearForm(form);
-
-        
+  
+    // Call the service to add the new business card
+    this.businessCardService.addBusinessCard(this.newCard).subscribe(
+      (response) => {
+        console.log('Business card added successfully:', response);
+  
+        // After successful submission, clear the form
+        this.clearForm(form);
       },
       (error) => {
         console.error('Error adding business card:', error);
       }
     );
   }
+  
   
 
 

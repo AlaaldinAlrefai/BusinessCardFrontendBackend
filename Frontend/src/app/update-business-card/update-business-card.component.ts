@@ -37,9 +37,9 @@ export class UpdateBusinessCardComponent {
   ) {
     this.businessCardForm = this.fb.group({
       name: [data.name, Validators.required],
-      gender: [data.gender, Validators.required],
-      //dateOfBirth:[data.dateOfBirth],
-      dateOfBirth: this.datePipe.transform(this.data.dateOfBirth, 'MM/dd/yy'), // Format the date
+      gender: [this.capitalizeFirstLetter(data.gender), Validators.required], // Ensure gender is set
+      dateOfBirth:[this.formatDate(data.dateOfBirth)],
+     // dateOfBirth: this.datePipe.transform(this.data.dateOfBirth, 'MM/dd/yy'), // Format the date
       email: [data.email, [Validators.required, Validators.email]],
       phone: [data.phone, Validators.required],
       address: [data.address],
@@ -57,16 +57,44 @@ export class UpdateBusinessCardComponent {
     this.businessCardForm.patchValue({
       name: this.data.name,
       gender: this.data.gender,
-      dateOfBirth: this.data.dateOfBirth, // Use formatted date
+      dateOfBirth: this.formatDate(this.data.dateOfBirth),
       email: this.data.email,
       phone: this.data.phone,
       address: this.data.address,
       notes: this.data.notes,
       photo: this.data.photo // Assuming the photo is in Base64 format
     });
+    console.log(this.data.gender);  // Log the gender value to debug
+
   }
   
 
+  capitalizeFirstLetter(value: string): string {
+    if (!value) return value;
+    return value.charAt(0).toUpperCase() + value.slice(1).toLowerCase();
+  }
+
+
+  formatDate(dateString: Date | string | null | undefined): string | null {
+    if (!dateString) {
+      return null;
+    }
+
+    let date = new Date(dateString);
+
+    // Subtract 1 month
+    date.setMonth(date.getMonth() + 1);
+
+    // Adjust for edge cases where subtracting a month could result in an invalid date
+    const newMonth = date.getMonth();
+    if (newMonth === 11 && date.getDate() === 31) {
+      // Edge case fix for months with fewer days
+      date.setDate(30);
+    }
+
+    // Format the date as 'yyyy-MM-dd'
+    return this.datePipe.transform(date, 'yyyy-MM-dd');
+  }
 
 
   onSave() {

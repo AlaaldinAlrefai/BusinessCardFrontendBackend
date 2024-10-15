@@ -9,14 +9,15 @@ import { MatDialog } from '@angular/material/dialog';
 import { UpdateBusinessCardComponent } from '../update-business-card/update-business-card.component';
 import { businessCard, BusinessCard } from '../models/business-card.model';
 import { Router } from '@angular/router';
-
+import { NgxPaginationModule } from 'ngx-pagination';
 
 @Component({
   selector: 'app-business-card-list',
   standalone: true,
   templateUrl: './business-card-list.component.html',
   styleUrls: ['./business-card-list.component.css'],
-  imports: [CommonModule, FilterComponent, FormsModule, ExportBusinessCardComponent,UpdateBusinessCardComponent], // Include FilterComponent here
+  imports: [CommonModule, FilterComponent, FormsModule, 
+    ExportBusinessCardComponent,UpdateBusinessCardComponent,NgxPaginationModule], // Include FilterComponent here
   providers: [DatePipe]
  // Include FilterComponent here
 })
@@ -25,6 +26,9 @@ export class BusinessCardListComponent {
   //businessCards:businessCard[] = [];
   filters: any = {}; // Object to hold filters
   businessCards: businessCard[] = [];
+  currentPage = 1;
+  itemsPerPage = 5;
+  pageSizes = [5, 10, 20, 50];
   
   
   constructor(private businessCardService: BusinessCardService,private toastr:ToastrService,public dialog: MatDialog 
@@ -40,6 +44,11 @@ export class BusinessCardListComponent {
     this.router.navigate(['/add']); // Redirect to the 'add' route
   }
 
+
+  updateItemsPerPage(event: any) {
+    this.itemsPerPage = event.target.value; // Update items per page
+    this.currentPage = 1; // Reset to first page after changing page size
+  }
 
 
   loadBusinessCards() {
