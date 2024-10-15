@@ -1,11 +1,16 @@
 import { bootstrapApplication } from '@angular/platform-browser';
 import { AppComponent } from './app/app.component';
-import { provideHttpClient } from '@angular/common/http';
-import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';  // Import additional providers if necessary
+import { appConfig } from './app/app.config';
+import { provideToastr } from 'ngx-toastr';
 
 bootstrapApplication(AppComponent, {
+  ...appConfig,
   providers: [
-    provideHttpClient(), provideAnimationsAsync('noop')  // Example of adding HttpClient support
-  ]
-})
-  .catch(err => console.error(err));
+    ...appConfig.providers, // Spread the existing providers
+    provideToastr({
+      timeOut: 3000, // Example configuration for toastr
+      positionClass: 'toast-bottom-right',
+      preventDuplicates: true,
+    })
+  ],
+}).catch(err => console.error(err));

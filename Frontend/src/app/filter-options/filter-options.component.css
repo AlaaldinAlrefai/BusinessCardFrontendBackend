@@ -12,6 +12,7 @@
     gap: 16px; /* Space between fields */
     flex-wrap: nowrap; /* Prevent wrapping to the next line */
     align-items: center; /* Center items vertically */
+    width: 100%;
   }
   
   .form-field {

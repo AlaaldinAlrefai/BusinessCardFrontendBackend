@@ -2,7 +2,7 @@ h2 {
     display: flex;
     justify-content: center;  /* Centers content horizontally */
     align-items: center;      /* Optional: centers content vertically */
-    height: 100%;             /* Optional: if you want to center within a container */
+    height: 100px;             /* Optional: if you want to center within a container */
     margin-top: 5px;
     color: #007bff;
 }
@@ -14,12 +14,11 @@ h2 {
 }
 .grid-container {
     display: grid;
-    grid-template-columns: repeat(7, 1fr); /* Seven columns for each property + actions */
+    grid-template-columns: repeat(8, 1fr); /* Seven columns for each property + actions */
     gap: 16px; /* Space between grid items */
     margin: 20px 0; /* Top and bottom margins */
-    width: 80%;
-    margin-left: 170px;
-    margin-top: 20px;
+    
+
 
     background: #ffffff !important; /* White background for form */
     border-radius: 8px; /* Rounded corners */
@@ -50,26 +49,73 @@ h2 {
     text-align: center; /* Center align text */
     border-bottom: 2px solid #ddd; /* Bottom border for separation */
 }
-#Delete{
+#Delete {
     background-color: #DC3545; /* Red */
     color: white;               /* Text color */
     border: none;               /* Remove border */
-
     border-radius: 5px;        /* Rounded corners */
     cursor: pointer;            /* Pointer cursor */
-    transition: background-color 0.3s; /* Smooth transition */
+    transition: background-color 0.3s, transform 0.3s; /* Smooth transition for color and scaling */
+    padding: 5px 10px;         /* Padding for better touch target */
+    font-size: 16px;           /* Font size for readability */
+    margin-right: 6px;
 }
-#Update{
 
+#Delete:hover {
+    background-color: #c82333; /* Darker red on hover */
+    transform: scale(1.05);    /* Slightly enlarge the button on hover */
+}
+
+#Update {
     background-color: #007BFF; /* Blue */
     color: white;               /* Text color */
     border: none;               /* Remove border */
-
     border-radius: 5px;        /* Rounded corners */
     cursor: pointer;            /* Pointer cursor */
-    transition: background-color 0.3s; /* Smooth transition */
+    transition: background-color 0.3s, transform 0.3s; /* Smooth transition for color and scaling */
+    padding: 5px 10px;        /* Padding for better touch target */
+    font-size: 16px;           /* Font size for readability */
 }
 
+#Update:hover {
+    background-color: #0056b3; /* Darker blue on hover */
+    transform: scale(1.05);    /* Slightly enlarge the button on hover */
+}
+
+/* app.component.css or global styles.css */
+
+/* Basic styling for the Add Business Card button */
+.add-card-btn {
+    background-color: #007bff; /* Primary blue */
+    color: #fff; /* White text */
+    border: none;
+    padding: 10px 20px; /* Space around the text */
+    font-size: 16px; /* Adjust the font size */
+    border-radius: 5px; /* Slightly rounded corners */
+    cursor: pointer; /* Pointer on hover */
+    transition: background-color 0.3s ease, box-shadow 0.3s ease; /* Smooth transition for hover effects */
+  }
+  
+  /* Hover and focus state for better user experience */
+  .add-card-btn:hover, .add-card-btn:focus {
+    background-color: #0056b3; /* Darker blue on hover */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); /* Shadow effect on hover */
+    outline: none; /* Remove the outline on focus */
+  }
+  
+  /* Active state to show feedback when clicked */
+  .add-card-btn:active {
+    background-color: #004085; /* Even darker blue when pressed */
+    box-shadow: none; /* Remove shadow when button is pressed */
+  }
+  
+  /* Optional: disabled state styling */
+  .add-card-btn:disabled {
+    background-color: #d6d6d6; /* Light gray when disabled */
+    color: #7a7a7a; /* Muted text color when disabled */
+    cursor: not-allowed; /* Show 'not-allowed' cursor when disabled */
+  }
+  
 
 
 

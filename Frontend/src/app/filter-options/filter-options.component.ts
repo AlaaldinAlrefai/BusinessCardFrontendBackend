@@ -16,7 +16,7 @@ import { MatButtonModule } from '@angular/material/button';
     MatInputModule,
     MatSelectModule,
     MatButtonModule,
-  ], // Import FormsModule here
+  ],
 })
 export class FilterComponent {
   name: string = '';
@@ -33,7 +33,7 @@ export class FilterComponent {
       dob: this.dateOfBirth,
       phone: this.phone,
       gender: this.gender,
-      email: this.email
+      email: this.email,
     };
     this.filterChange.emit(filters); // Emit the filters
   }
@@ -44,7 +44,7 @@ export class FilterComponent {
     this.phone = '';
     this.gender = '';
     this.email = '';
+
+    this.filterChange.emit({}); // Emit an empty object to reset filters in the parent component
   }
-
-
 }

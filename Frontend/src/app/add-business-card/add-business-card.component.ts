@@ -1,39 +1,54 @@
-import { Component } from '@angular/core';
-import { FormsModule } from '@angular/forms'; 
+import { Component, ViewChild, ElementRef } from '@angular/core';
+import { FormsModule, NgForm } from '@angular/forms'; 
 import { BusinessCardService } from '../services/business-card.service';
 import { BusinessCard } from '../models/business-card.model';
+import { ImportBusinessCardComponent } from "../import-business-card/import-business-card.component";
+import { Router } from '@angular/router';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-add-business-card',
   standalone: true,
   templateUrl: './add-business-card.component.html',
   styleUrls: ['./add-business-card.component.css'],
-  imports: [FormsModule]
+  imports: [FormsModule, ImportBusinessCardComponent,CommonModule]
 })
 export class AddBusinessCardComponent {
-  newCard: BusinessCard = { 
-    id: 0, 
-    name: '', 
-    gender: '', 
-    dateOfBirth: null, 
-    email: '', 
-    phone: '', 
-    address: '', 
-    notes: '', 
-    photo: '', 
-    qrCode: '' ,
-    userId: 2
+  @ViewChild('photoInput') photoInput!: ElementRef<HTMLInputElement>; // Reference to the file input element
+
+
+  newCard: BusinessCard = {
+    id: 0, // You can initialize this as undefined for new cards
+    userId: 2,
+    name: '',
+    gender: '',
+    dateOfBirth: null,
+    email: '',
+    phone: '',
+    address: '',
+    notes: '',
+    photo: ''
   };
 
   
 
-  constructor(private businessCardService: BusinessCardService) {}
+  constructor(private businessCardService: BusinessCardService,private router: Router) {}
 
-  onSubmit() {
+  onSubmit(form: NgForm) {
     this.businessCardService.addBusinessCard(this.newCard).subscribe(
       (response) => {
         console.log('Business card added successfully:', response);
+        // Set isCardSaved to true after successful submission
         // Reset form or show success message
+
+        // Convert dateOfBirth to a Date object if it exists
+    if (this.newCard.dateOfBirth) {
+      this.newCard.dateOfBirth = new Date(this.newCard.dateOfBirth);
+    }
+    // After successful submission, clear the form
+    this.clearForm(form);
+
+        
       },
       (error) => {
         console.error('Error adding business card:', error);
@@ -43,6 +58,30 @@ export class AddBusinessCardComponent {
   
 
 
+  clearForm(form: NgForm) {
+    this.newCard = {
+      id: 0, // Maintain the correct type
+      userId: 2, // Maintain user ID for future entries
+      name: '',
+      gender: '',
+      dateOfBirth: null,
+      email: '',
+      phone: '',
+      address: '',
+      notes: '',
+      photo: ''
+    };
+
+    form.resetForm(); // This will reset the form state
+    this.photoInput.nativeElement.value = ''; // Clear the file input
+  }
+
+
+  
+  // Method to navigate to another page
+  navigateToBusinessCardList() {
+    this.router.navigate(['/list']); // Redirect to the 'add' route
+  }
 
 
 
@@ -65,6 +104,8 @@ export class AddBusinessCardComponent {
         };
         // Convert the file to Base64
         reader.readAsDataURL(file);
+        // Clear the input value after reading the file
+     // this.photoInput.nativeElement.value = '';
     } else {
         // Clear the photo if no file is selected
         this.newCard.photo = '';

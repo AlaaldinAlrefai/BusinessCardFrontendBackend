@@ -1,6 +1,10 @@
 <h2>Business Card List</h2>
 <app-filter (filterChange)="applyFilters($event)"></app-filter>
-<form class="containers">
+<app-export-business-card></app-export-business-card>
+<button (click)="navigateToAddBusinessCard()" class="btn btn-primary add-card-btn">
+    Add Business Card
+  </button>
+  <form class="containers">
 <div class="grid-body"> 
 <div class="grid-container">
   <div class="grid-header">
@@ -10,18 +14,31 @@
       <div>Email</div>
       <div>Phone</div>
       <div>Address</div>
+      <div>Photo</div>
       <div>Actions</div>
   </div>
-  <div class="grid-body" *ngFor="let card of businessCards">
-      <div class="grid-item">{{ card.name }}</div>
-      <div class="grid-item">{{ card.gender }}</div>
-      <div class="grid-item">{{ card.dateOfBirth | date: 'shortDate' }}</div>
-      <div class="grid-item">{{ card.email }}</div>
-      <div class="grid-item">{{ card.phone }}</div>
-      <div class="grid-item">{{ card.address }}</div>
+  <div class="grid-body" *ngFor="let businessCard of businessCards">
+      <div class="grid-item">{{ businessCard.name }}</div>
+      <div class="grid-item">{{ businessCard.gender }}</div>
+      <div class="grid-item">{{ formatDate(businessCard.dateOfBirth) }}</div> <!-- Updated line -->
+
+      <div class="grid-item">{{ businessCard.email }}</div>
+      <div class="grid-item">{{ businessCard.phone }}</div>
+      <div class="grid-item">{{ businessCard.address }}</div>
       <div class="grid-item">
-          <button id="Delete" (click)="deleteCard(card.id)">Delete</button>
-          <button id="Update" (click)="exportCard(card)">Update</button>
+        <img 
+            [src]="businessCard.photo ? 'data:image/png;base64,' + businessCard.photo : 'path/to/placeholder-image.png'" 
+            alt="{{ businessCard.name }}'s photo" 
+            style="max-width: 70px; max-height: 70px; border-radius: 5px;" 
+        />
+    </div>
+    
+
+    
+
+      <div class="grid-item">
+          <button id="Delete" (click)="deleteCard(businessCard.id)">Delete</button>
+          <button id="Update" (click)="openUpdateDialog(businessCard)">Update</button>
       </div>
   </div>
 </div>

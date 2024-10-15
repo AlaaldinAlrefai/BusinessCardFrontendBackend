@@ -1,29 +1,32 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { AppComponent } from './app.component';
-import { AppRoutingModule } from './app-routing.module'; // Import your routing module
+import { AppRoutingModule } from './app-routing.module'; 
 import { provideHttpClient } from '@angular/common/http';
-import { FormsModule } from '@angular/forms';
-import { CommonModule } from '@angular/common';
-import { FilterComponent } from './filter-options/filter-options.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms'; 
+import { ToastrModule } from 'ngx-toastr';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MatInputModule } from '@angular/material/input';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatDialogModule } from '@angular/material/dialog';
+import { MatSelectModule } from '@angular/material/select';
 
 @NgModule({
-  declarations: [
-    
-    //FilterComponent
-     // Declare your AppComponent
-  ],
   imports: [
-    BrowserModule, // Include BrowserModule for browser support
-    AppRoutingModule, // Include your AppRoutingModule for routing
-    AppComponent,
+    BrowserModule,
+    AppRoutingModule,
     FormsModule,
-    CommonModule,
-    FilterComponent,
+    ReactiveFormsModule,
+    MatDialogModule,
+    MatFormFieldModule,
+    MatInputModule,
+    MatSelectModule,
+    BrowserAnimationsModule,
+    ToastrModule.forRoot() // Add this line
+
     
   ],
   providers: [
-    provideHttpClient()], // Add any services here if needed
-
+    provideHttpClient(),
+  ],
 })
 export class AppModule {}
