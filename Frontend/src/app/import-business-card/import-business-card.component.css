@@ -58,6 +58,7 @@ h2, h3 {
     transition: background-color 0.3s; /* Smooth transition for button */
     background-color: #007bff; /* Primary button color */
     border-color: #007bff;
+    margin-top: 10px;
 }
 
 .btn:hover {
@@ -71,3 +72,47 @@ h2, h3 {
 .file-list {
     margin-top: 10px; /* Space above the file list */
 }
+
+
+
+
+
+
+
+/* Style for the preview container */
+.preview-container {
+  margin-top: 20px;
+}
+
+/* Scrollable preview area */
+.scrollable-preview {
+  max-height: 300px; /* Set a maximum height for the preview area */
+  overflow-y: auto; /* Make the content scrollable */
+  border: 1px solid #ccc; /* Optional: add a border for better visualization */
+  padding: 10px; /* Optional: add padding */
+  background-color: #f9f9f9; /* Optional: background color */
+}
+
+/* Style for the table inside the preview */
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+th, td {
+  border: 1px solid #ddd;
+  padding: 8px;
+}
+
+th {
+  background-color: #f2f2f2;
+  font-weight: bold;
+}
+
+pre {
+  white-space: pre-wrap;
+  word-wrap: break-word;
+}
+
+
+  

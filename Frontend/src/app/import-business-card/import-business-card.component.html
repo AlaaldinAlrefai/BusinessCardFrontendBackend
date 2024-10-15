@@ -1,45 +1,75 @@
 <div class="file-upload-container">
-    <h3>Import Business Cards</h3>
-    
-    <div 
-        class="drag-and-drop" 
-        (dragover)="onDragOver($event)" 
-        (drop)="onDrop($event)" 
-        (click)="triggerFileInput()">
-        
-        <p>Drag and drop your files here or <strong>click to upload</strong>.</p>
-        
-        <!-- Displaying icons for the dragged files -->
+  <h3>Import Business Cards</h3>
+  
+  <div 
+      class="drag-and-drop" 
+      (dragover)="onDragOver($event)" 
+      (drop)="onDrop($event)" 
+      (click)="triggerFileInput()">
+      
+      <p>Drag and drop your files here or <strong>click to upload</strong>.</p>
+      
+      <!-- Displaying icons for the dragged files -->
 <div class="file-icons" *ngIf="files.length > 0">
-    <ng-container *ngFor="let file of files">
-        <div class="file-icon">
-            <img [src]="getFileIcon(file)" alt="{{file.name}}" />
-            <span>{{ file.name }}</span>
-        </div>
-    </ng-container>
+  <ng-container *ngFor="let file of files">
+      <div class="file-icon">
+          <img [src]="getFileIcon(file)" alt="{{file.name}}" />
+          <span>{{ file.name }}</span>
+      </div>
+  </ng-container>
 </div>
 
 
-        <input 
-            type="file" 
-            (change)="onFileChange($event)" 
-            accept=".xml, .csv, .png, .jpg" 
-            multiple 
-            hidden 
-            #fileInput />
-    </div>
-    
-    <button type="submit" class="btn btn-primary" (click)="importFiles()" [disabled]="files.length === 0" >Import Files</button>
+      <input 
+          type="file" 
+          (change)="onFileChange($event)" 
+          accept=".xml, .csv, .png, .jpg" 
+          multiple 
+          hidden 
+          #fileInput />
+  </div>
+  
 
-    <div *ngIf="businessCardPreview" class="preview-section">
-        <h4>Preview:</h4>
-        <app-business-card-preview [businessCard]="businessCardPreview"></app-business-card-preview>
+
+  <div class="file-upload-section">
+   
+  
+    <!-- Preview Section -->
+    <div class="preview-container">
+      <!-- CSV Preview -->
+      <div *ngIf="previewData.length > 0">
+        <h3>CSV Preview</h3>
+        <div class="scrollable-preview">
+          <table>
+            <thead>
+              <tr>
+                <th *ngFor="let header of previewData[0]">{{ header }}</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let row of previewData.slice(1)">
+                <td *ngFor="let cell of row">{{ cell }}</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+  
+      <!-- XML Preview -->
+      <div *ngIf="xmlPreviewString">
+        <h3>XML Preview</h3>
+        <div class="scrollable-preview">
+          <pre>{{ xmlPreviewString }}</pre>
+        </div>
+      </div>
     </div>
+  
+    <!-- Upload Button -->
+<!-- Save/Upload Button -->
+<button type="submit" class="btn btn-primary" (click)="saveToDatabase()" [disabled]="isCardSaved" [disabled]="files.length === 0">Import File</button>
+  </div>
     
-    <div *ngIf="files.length > 0" class="file-list">
-        <h4>Selected Files:</h4>
-        <ul>
-            <li *ngFor="let file of files">{{ file.name }}</li>
-        </ul>
-    </div>
+    
+    
+
 </div>

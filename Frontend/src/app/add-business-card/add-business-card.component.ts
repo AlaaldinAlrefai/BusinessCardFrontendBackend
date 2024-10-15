@@ -4,16 +4,18 @@ import { BusinessCardService } from '../services/business-card.service';
 import { BusinessCard } from '../models/business-card.model';
 import { ImportBusinessCardComponent } from "../import-business-card/import-business-card.component";
 import { Router } from '@angular/router';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-add-business-card',
   standalone: true,
   templateUrl: './add-business-card.component.html',
   styleUrls: ['./add-business-card.component.css'],
-  imports: [FormsModule, ImportBusinessCardComponent]
+  imports: [FormsModule, ImportBusinessCardComponent,CommonModule]
 })
 export class AddBusinessCardComponent {
   @ViewChild('photoInput') photoInput!: ElementRef<HTMLInputElement>; // Reference to the file input element
+
 
   newCard: BusinessCard = {
     id: 0, // You can initialize this as undefined for new cards
@@ -36,6 +38,7 @@ export class AddBusinessCardComponent {
     this.businessCardService.addBusinessCard(this.newCard).subscribe(
       (response) => {
         console.log('Business card added successfully:', response);
+        // Set isCardSaved to true after successful submission
         // Reset form or show success message
 
         // Convert dateOfBirth to a Date object if it exists

@@ -1,6 +1,6 @@
 
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { catchError, Observable, tap, throwError } from 'rxjs';
 import { BusinessCard } from '../models/business-card.model'; // Adjust the import path as necessary
 import { ImportResponse } from '../models/import-response.model';
@@ -51,22 +51,7 @@ export class BusinessCardService {
 
 
 
-  // Method to import XML data
-  
-importXML(file: File): Observable<ImportResponse> {
-  const formData = new FormData();
-  formData.append('file', file); // Append the XML file to the form data
 
-  return this.http.post<ImportResponse>(`${this.apiUrl}/import`, formData).pipe(
-    tap(response => {
-      console.log('Import response:', response); // Log the response
-    }),
-    catchError(error => {
-      console.error('Error importing XML:', error);
-      return throwError(error);
-    })
-  );
-}
 
   
 
@@ -78,13 +63,7 @@ importXML(file: File): Observable<ImportResponse> {
   
   
 
-  // Method to import CSV data
-importCSV(file: File): Observable<any> {
-  const formData = new FormData();
-  formData.append('file', file); // Append the file to the form data
 
-  return this.http.post(`${this.apiUrl}/import`, formData); // No `/csv` here
-}
 
 
 
@@ -129,9 +108,25 @@ importQRCode(file: File) {
 
 
 
+ 
 
 
+  uploadBusinessCardFile(file: File) {
+    const formData = new FormData();
+    formData.append('file', file);
 
+    const headers = new HttpHeaders({
+      // You do not need to set Content-Type here, as the browser will set it to multipart/form-data
+    });
 
-
+    return this.http.post('https://localhost:7032/api/BusinessCards/import', formData, { headers });
+  }
 }
+
+
+
+    
+    
+
+
+

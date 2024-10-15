@@ -9,7 +9,6 @@ import { MatInputModule } from '@angular/material/input';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatSelectModule } from '@angular/material/select';
-import { FilterComponent } from './filter-options/filter-options.component';
 
 @NgModule({
   imports: [
@@ -22,11 +21,9 @@ import { FilterComponent } from './filter-options/filter-options.component';
     MatInputModule,
     MatSelectModule,
     BrowserAnimationsModule,
-    ToastrModule.forRoot({
-      timeOut: 3000,
-      positionClass: 'toast-bottom-right',
-      preventDuplicates: true,
-    }),
+    ToastrModule.forRoot() // Add this line
+
+    
   ],
   providers: [
     provideHttpClient(),
