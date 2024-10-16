@@ -17,7 +17,7 @@
       <div>Photo</div>
       <div>Actions</div>
   </div>
-  <div class="grid-body" *ngFor="let businessCard of businessCards">
+  <div class="grid-body" *ngFor="let businessCard of businessCards | paginate: { itemsPerPage: itemsPerPage, currentPage: currentPage }">
       <div class="grid-item">{{ businessCard.name }}</div>
       <div class="grid-item">{{ businessCard.gender }}</div>
       <div class="grid-item">{{ formatDate(businessCard.dateOfBirth) }}</div> <!-- Updated line -->
@@ -44,3 +44,21 @@
 </div>
 </div>   
 </form>
+
+<div class="pagination-controls-row d-flex justify-content-between align-items-center mt-3">
+
+    <!-- Items Per Page Dropdown -->
+    <div class="items-per-page d-flex align-items-center">
+      <label for="itemsPerPageSelect" class="me-2">Items Per Page:</label>
+      <select id="itemsPerPageSelect" [(ngModel)]="itemsPerPage" (change)="updateItemsPerPage($event)" class="form-select" style="width: auto;">
+        <option *ngFor="let size of pageSizes" [value]="size">{{ size }}</option>
+      </select>
+    </div>
+    <div class="total-records">
+      Total Records: {{ businessCards.length }} <!-- Display total records here -->
+    </div>
+    <!-- Pagination Controls -->
+    <div class="d-flex justify-content-end">
+      <pagination-controls (pageChange)="currentPage = $event"></pagination-controls>
+    </div>
+  </div>
