@@ -22,8 +22,7 @@ import { NgxPaginationModule } from 'ngx-pagination';
  // Include FilterComponent here
 })
 export class BusinessCardListComponent {
-  //businessCards: BusinessCard[] = []; // Initialize as an empty array
-  //businessCards:businessCard[] = [];
+
   filters: any = {}; // Object to hold filters
   businessCards: businessCard[] = [];
   currentPage = 1;
