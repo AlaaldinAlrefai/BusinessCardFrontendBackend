@@ -85,6 +85,7 @@ export class BusinessCardListComponent {
   }
 
   applyFilters(filters: any) {
+    this.currentPage = 1
     const validFilters: Record<string, any> = {}; // استخدم Record<string, any>
     for (const key in filters) {
       if (filters[key]) {
