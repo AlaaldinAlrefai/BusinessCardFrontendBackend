@@ -61,9 +61,16 @@ export class BusinessCardListComponent {
 
   formatDate(date?: Date | null): string | null {
     if (!date) return null; // Return null if the date is not provided
+  
     const d = new Date(date); // Create a new Date object
-    return `${d.getMonth()}/${d.getDate()}/${d.getFullYear()}`; // Format to MM/dd/yyyy
+    const month = d.getMonth() + 1; // Adjust the month (add 1 because months are zero-indexed)
+    const day = d.getDate();
+    const year = d.getFullYear();
+  
+    // Format the date as MM/dd/yyyy
+    return `${month}/${day}/${year}`;
   }
+  
   
   
 
