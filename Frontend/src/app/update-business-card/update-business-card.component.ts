@@ -83,7 +83,7 @@ export class UpdateBusinessCardComponent {
     let date = new Date(dateString);
 
     // Subtract 1 month
-    date.setMonth(date.getMonth() + 1);
+    date.setMonth(date.getMonth());
 
     // Adjust for edge cases where subtracting a month could result in an invalid date
     const newMonth = date.getMonth();
